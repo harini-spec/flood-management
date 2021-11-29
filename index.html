@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
-<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,9 +8,6 @@
     <meta name="author" content="">
 
     <script src="poll.js" type="text/javascript"></script>
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
     <title>FLOOD MANAGEMENT </title>
     <!--REQUIRED STYLE SHEETS-->
     <!-- BOOTSTRAP CORE STYLE CSS -->
@@ -31,12 +24,130 @@
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Poll UI Design | CodingNepal</title> -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        ::selection{
+  color: #fff;
+  background: #6665ee;
+}
+.wrapper{
+  /* background: #fff; */
+  /* background-color: white; */
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 22px;
+  font-weight: 600;
+}
+.wrapper .poll-area{
+  margin: 20px 0 15px 0;
+}
+.poll-area label{
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 8px 15px;
+  border: 2px solid #e6e6e6;
+  /* transition: all 0.2s ease; */
+}
+.poll-area label:hover{
+  border-color: #ddd;
+}
+label.selected{
+  border-color: #6665ee!important;
+}
+label .row{
+  display: flex;
+  pointer-events: none;
+  justify-content: space-between;
+}
+label .row .column{
+  display: flex;
+  align-items: center;
+}
+label .row .circle{
+  height: 19px;
+  width: 19px;
+  display: block;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+label.selected .row .circle{
+  border-color: #6665ee;
+}
+label .row .circle::after{
+  content: "";
+  height: 11px;
+  width: 11px;
+  background: #6665ee;
+  border-radius: inherit;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  display: none;
+}
+.poll-area label:hover .row .circle::after{
+  display: block;
+  background: #e6e6e6;
+}
+label.selected .row .circle::after{
+  display: block;
+  background: #6665ee!important;
+}
+label .row span{
+  font-size: 16px;
+  font-weight: 500;
+}
+label .row .percent{
+  display: none;
+}
+label .progress{
+  height: 7px;
+  width: 100%;
+  position: relative;
+  background: #f0f0f0;
+  margin: 8px 0 3px 0;
+  border-radius: 30px;
+  display: none;
+  pointer-events: none;
+}
+label .progress:after{
+  position: absolute;
+  content: "";
+  height: 100%;
+  background: #ccc;
+  width: calc(1% * var(--w));
+  border-radius: inherit;
+  transition: all 0.2s ease;
+}
+label.selected .progress::after{
+  background: #6665ee;
+}
+label.selectall .progress,
+label.selectall .row .percent{
+  display: block;
+}
+input[type="radio"],
+input[type="checkbox"]{
+  display: none;
+}
+
+    </style>
+
 </head>
+
 <body class="cbp-spmenu-push">
 
     <!-- MAIN HEADING-->
@@ -71,7 +182,7 @@
     <!--RIGHT SLIDE MENU-->
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
         <h3>SOCIAL</h3>
-        <a href="#">MY SOCIAL PRESENCE</a>
+        <a href="#">Social updates</a>
         <a href="#"><i class="fa fa-facebook fa-3x"></i>Facebook</a>
         <a href="#"><i class="fa fa-twitter fa-3x"></i>Twitter</a>
         <a href="#"><i class="fa fa-linkedin fa-3x"></i>Linked In</a>
@@ -93,7 +204,6 @@
                 <span class="head-main">RESCUE TOOL</span>
                 <h2>.</h2>
                 <h3 class="head-last"></h3>
-                <!-- <a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">EXPLORE AXIS</a> &nbsp;  <a href="#about-sec" class="btn btn-primary btn-lg">MODEL THEME</a> -->
             </div>
         </div>
     </div>
@@ -161,11 +271,6 @@
                             <br>
                         </div>
                     </div>
-
-                   
-
-
-
                 </div>
             </div>
 
@@ -176,41 +281,80 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d31091.251758111892!2d80.21577084432289!3d13.073406110496613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3a526883cbff26cd%3A0xa52dda4350a103b1!2sMarina%20Walk%2C%20Chennai!3m2!1d13.046655999999999!2d80.28030249999999!4m5!1s0x3a5263f71ccaa7c7%3A0x4eaca488332e5dbe!2sPadi%2C%20Chennai%2C%20Tamil%20Nadu!3m2!1d13.096453499999999!2d80.1845234!5e0!3m2!1sen!2sin!4v1638011778314!5m2!1sen!2sin" width="766" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </p>
         </div>
-        <!-- <div class="row g-pad-bottom">
-            <div class="col-md-6">
-                <h3>Lorem ipsum  dolor sit amet</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                           Lorem ipsum dolor sit amet, consectetur nec nisl odio
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <h3>Lorem ipsum  dolor sit amet</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                           Lorem ipsum dolor sit amet, consectetur nec nisl odio
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    </p>
-                </div>
-            </div> -->
 
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    
+                </div>
+                <div class="col-sm">
+                  <div class="wrapper" style="background-color: gray; opacity: 0.8; color: white;" >
+                        <header>Poll UI Design</header>
+                        <div class="poll-area">
+                          <input type="checkbox" name="poll" id="opt-1">
+                          <input type="checkbox" name="poll" id="opt-2">
+                          <input type="checkbox" name="poll" id="opt-3">
+                          <input type="checkbox" name="poll" id="opt-4">
+                          <label for="opt-1" class="opt-1">
+                            <div class="row">
+                              <div class="column">
+                                <span class="circle"></span>
+                                <span class="text">HTML</span>
+                              </div>
+                              <span class="percent">30%</span>
+                            </div>
+                            <div class="progress" style='--w:30;'></div>
+                          </label>
+                          <label for="opt-2" class="opt-2">
+                            <div class="row">
+                              <div class="column">
+                                <span class="circle"></span>
+                                <span class="text">Java</span>
+                              </div>
+                              <span class="percent">20%</span>
+                            </div>
+                            <div class="progress" style='--w:20;'></div>
+                          </label>
+                          <label for="opt-3" class="opt-3">
+                            <div class="row">
+                              <div class="column">
+                                <span class="circle"></span>
+                                <span class="text">Python</span>
+                              </div>
+                              <span class="percent">40%</span>
+                            </div>
+                            <div class="progress" style='--w:40;'></div>
+                          </label>
+                          <label for="opt-4" class="opt-4">
+                            <div class="row">
+                              <div class="column">
+                                <span class="circle"></span>
+                                <span class="text">jQuery</span>
+                              </div>
+                              <span class="percent">10%</span>
+                            </div>
+                            <div class="progress" style='--w:10;'></div>
+                          </label>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm">
+                </div>
+              </div>
+        </div>
+        <br><br>
     </section>
+
+
+    <!--  -->
     <!--END ABOUT SECTION-->
 
+
     <!-- poll -->
-    <div class="poll">
-        <div class="question"></div>
-        <div class="answers"></div>
-      </div>
 
     <!--PRICE SECTION-->
-    <section id="price-sec">
+    <!-- <section id="price-sec">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12 ">
@@ -272,7 +416,7 @@
 
 
         </div>
-    </section>
+    </section> -->
     <!-- END PRICE SECTION-->
 
     <!--SERVICES SECTION-->
@@ -287,7 +431,7 @@
                     <div class="col-md-8 col-md-offset-2 ">
                         <h4>
                             <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
+                        Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
                             </strong>
                         </h4>
                     </div>
@@ -305,7 +449,7 @@
                             <h4>Sure Quique Menu </h4>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
+                        Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
                             </p>
                         </div>
                     </div>
@@ -455,7 +599,7 @@
     <!--END CONTACT SECTION-->
 
     <!-- SOCIAL STATS SECTION-->
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row g-pad-bottom">
                 <div class="col-md-3 ">
@@ -484,14 +628,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- END SOCIAL STATS SECTION-->
 
     <!--FOOTER SECTION -->
     <div class="for-full-back color-bg-one" id="footer">
         2014 www.yourdomain.com | All Right Reserved | Terms | Policies | Licenses 
-         
+
     </div>
+
+
+
     <!-- END FOOTER SECTION -->
 
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
@@ -507,5 +654,44 @@
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
 
+<script>
+    const options = document.querySelectorAll("label");
+for (let i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", ()=>{
+    for (let j = 0; j < options.length; j++) {
+      if(options[j].classList.contains("selected")){
+        options[j].classList.remove("selected");
+      }
+    }
+
+    options[i].classList.add("selected");
+    for (let k = 0; k < options.length; k++) {
+      options[k].classList.add("selectall");
+    }
+
+    let forVal = options[i].getAttribute("for");
+    let selectInput = document.querySelector("#"+forVal);
+    let getAtt = selectInput.getAttribute("type");
+    if(getAtt == "checkbox"){
+      selectInput.setAttribute("type", "radio");
+    }else if(selectInput.checked == true){
+      options[i].classList.remove("selected");
+      selectInput.setAttribute("type", "checkbox");
+    }
+
+    let array = [];
+    for (let l = 0; l < options.length; l++) {
+      if(options[l].classList.contains("selected")){
+        array.push(l);
+      }
+    }
+    if(array.length == 0){
+      for (let m = 0; m < options.length; m++) {
+        options[m].removeAttribute("class");
+      }
+    }
+  });
+}
+</script>
 </body>
 </html>
